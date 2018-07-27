@@ -90,6 +90,8 @@ public class ScrollOneActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
     public void changeViewPager(boolean isOpen){

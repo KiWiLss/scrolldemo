@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"/>
 
+    <!--最好不用viewpager,存在滑动问题-->
     <com.kiwilss.scrolldemo.widget.NoScrollViewPager
         android:id="@+id/nsv_scroll_one_vp2"
         android:layout_width="match_parent"

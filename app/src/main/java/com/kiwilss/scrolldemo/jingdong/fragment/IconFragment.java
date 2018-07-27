@@ -103,6 +103,8 @@ public class IconFragment extends Fragment {
         nsvscrollonevp2.setAdapter(iconFgAdapter);
         tlfgtab.setupWithViewPager(nsvscrollonevp2);
 
+
+
         return rootView;
     }
 

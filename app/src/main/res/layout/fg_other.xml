@@ -11,4 +11,8 @@
         android:background="#0f0"/>
     <!--不支持listView-->
 
+    <com.kiwilss.scrolldemo.jingdong.widget.ItemListView
+        android:id="@+id/ilv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
