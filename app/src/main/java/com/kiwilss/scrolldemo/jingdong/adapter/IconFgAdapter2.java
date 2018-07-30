@@ -17,11 +17,11 @@ import java.util.List;
  * desc   : ${DESCRIPTION}
  * Description: ${DESCRIPTION}
  */
-public class IconFgAdapter extends DragDetailFragmentPagerAdapter {
+public class IconFgAdapter2 extends DragDetailFragmentPagerAdapter {
     private List<Fragment> mList;
     String mTitle[] = { "图文详情","规格参数" };
 
-    public IconFgAdapter(FragmentManager fm, List<Fragment> list) {
+    public IconFgAdapter2(FragmentManager fm, List<Fragment> list) {
         super(fm);
         mList = list;
     }

@@ -55,4 +55,8 @@ public class ScrollingActivity extends AppCompatActivity {
     public void scrollOne(View view) {
         startActivity(new Intent(this, ScrollOneActivity.class));
     }
+
+    public void scrollOneInter(View view) {
+
+    }
 }

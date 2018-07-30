@@ -23,6 +23,7 @@
         </activity>
 
         <activity android:name=".jingdong.ScrollOneActivity"/>
+        <activity android:name=".test.ScrollTestActivity"/>
     </application>
 
 </manifest>

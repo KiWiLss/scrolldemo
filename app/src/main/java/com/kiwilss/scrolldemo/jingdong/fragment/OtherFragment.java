@@ -7,10 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.kiwilss.scrolldemo.R;
 import com.kiwilss.scrolldemo.jingdong.adapter.OtherFgAdapter;
-import com.kiwilss.scrolldemo.jingdong.widget.ItemListView;
 
 import java.util.ArrayList;
 
@@ -25,13 +25,13 @@ import java.util.ArrayList;
  */
 public class OtherFragment extends Fragment {
     private ArrayList<Integer> mData;
-    private com.kiwilss.scrolldemo.jingdong.widget.ItemListView ilv;
+    private ListView ilv;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fg_other, container, false);
-        this.ilv = (ItemListView) rootView.findViewById(R.id.ilv);
+        this.ilv = rootView.findViewById(R.id.ilv);
 
         mData = new ArrayList<>();
 

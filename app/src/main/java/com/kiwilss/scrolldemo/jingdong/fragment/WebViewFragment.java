@@ -43,6 +43,7 @@ public class WebViewFragment extends Fragment {
         iwvwb.getSettings().setJavaScriptEnabled(true);//支持加载javascript脚本
 
         iwvwb.loadUrl("https://www.baidu.com");
+        //iwvwb.loadUrl("https://www.jianshu.com/p/0fc1d9223d3d");
 
         return rootView;
     }

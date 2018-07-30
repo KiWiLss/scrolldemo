@@ -13,7 +13,7 @@ import android.widget.ImageView;
 
 import com.kiwilss.scrolldemo.R;
 import com.kiwilss.scrolldemo.jingdong.ScrollOneActivity;
-import com.kiwilss.scrolldemo.jingdong.adapter.IconFgAdapter;
+import com.kiwilss.scrolldemo.jingdong.adapter.IconFgAdapter2;
 import com.kiwilss.scrolldemo.jingdong.widget.SlideDetailsLayout;
 import com.kiwilss.scrolldemo.widget.GradationScrollView;
 import com.kiwilss.scrolldemo.widget.NoScrollViewPager;
@@ -47,7 +47,7 @@ public class IconFragment extends Fragment {
 
         initView(rootView);
 
-            nsvscrollonevp2.setNoScroll(true);
+            //nsvscrollonevp2.setNoScroll(true);
 
         //监听是在上半部分,还是在下半部分
         sdl.setOnSlideDetailsListener(new SlideDetailsLayout.OnSlideDetailsListener() {
@@ -98,7 +98,7 @@ public class IconFragment extends Fragment {
        //初始化fragment
         initFragment();
 
-        IconFgAdapter iconFgAdapter = new IconFgAdapter(getActivity().
+        IconFgAdapter2 iconFgAdapter = new IconFgAdapter2(getActivity().
                 getSupportFragmentManager(), mFragments);
         nsvscrollonevp2.setAdapter(iconFgAdapter);
         tlfgtab.setupWithViewPager(nsvscrollonevp2);

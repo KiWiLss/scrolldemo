@@ -20,7 +20,11 @@
             android:text="仿京东商品详情页"
             android:onClick="scrollOne"/>
 
-
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="单一界面"
+            android:onClick="scrollOneInter"/>
 
 
         <TextView
