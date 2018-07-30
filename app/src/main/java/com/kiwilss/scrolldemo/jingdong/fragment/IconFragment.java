@@ -47,7 +47,7 @@ public class IconFragment extends Fragment {
 
         initView(rootView);
 
-            //nsvscrollonevp2.setNoScroll(true);
+            nsvscrollonevp2.setNoScroll(true);
 
         //监听是在上半部分,还是在下半部分
         sdl.setOnSlideDetailsListener(new SlideDetailsLayout.OnSlideDetailsListener() {

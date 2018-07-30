@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--底部一些内容-->
+
+    <RelativeLayout
+        android:id="@+id/rl_jd_test_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ff0"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="立即购买,购物车等内容"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <!--中间部分-->
+
+    <com.kiwilss.scrolldemo.widget.NoScrollViewPager
+        android:id="@+id/nsv_jd_test_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl_jd_test_bottom"/>
+
+
+    <!--标题内容-->
+
+    <!--第一个标题,不设置背景-->
+    <RelativeLayout
+        android:id="@+id/rl_jd_test_title1"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_jd_test_back1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/backicon2"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageView
+            android:id="@+id/iv_jd_test_share1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/shareicon2"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+
+    </RelativeLayout>
+
+    <!--第二个标题-->
+
+    <RelativeLayout
+        android:id="@+id/rl_jd_test_title2"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#fff"
+        android:alpha="0"
+        >
+
+        <ImageView
+            android:id="@+id/iv_jd_test_back2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/backiocn"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"/>
+
+        <ImageView
+            android:id="@+id/iv_jd_test_share2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/shareicon1"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="14dp"/>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tl_jd_test_tab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"/>
+
+        <TextView
+            android:id="@+id/tv_jd_test_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="图文详情"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

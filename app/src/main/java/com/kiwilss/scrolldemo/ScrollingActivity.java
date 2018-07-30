@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.kiwilss.scrolldemo.jd.JDTestActivity;
 import com.kiwilss.scrolldemo.jingdong.ScrollOneActivity;
 import com.kiwilss.scrolldemo.test.ScrollTestActivity;
 
@@ -62,6 +63,6 @@ public class ScrollingActivity extends AppCompatActivity {
     }
 
     public void scrollOne2(View view) {
-
+        startActivity(new Intent(this, JDTestActivity.class));
     }
 }
