@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -66,10 +67,35 @@ public class JDTestActivity extends AppCompatActivity {
         nsvjdtestvp.setAdapter(jdOneAdapter);
         tljdtesttab.setupWithViewPager(nsvjdtestvp);
 
+        nsvjdtestvp.setOffscreenPageLimit(mFragments.size());
+        tljdtesttab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+                //记录标题初始透明度值
+                if (position == 1){
+                    mAlpha1 = rljdtesttitle1.getAlpha();
+                    mAlpha2 = rljdtesttitle2.getAlpha();
+                }
+                Log.e("MMM", "onTabSelected: "+position);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
         //viewPager滑动监听
         nsvjdtestvp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                Log.e("MMM", "onPageScrolled: "+position+"||"+positionOffset );
                 if (position == 0){
                     rljdtesttitle1.setAlpha(mAlpha1-positionOffset);
                     rljdtesttitle2.setAlpha(positionOffset+mAlpha2);
@@ -90,6 +116,7 @@ public class JDTestActivity extends AppCompatActivity {
                 if(state == 1){
                     //开始拖动
                     if (mPos == 0){
+                        Log.e("MMM", "onPageScrollStateChanged: "+mAlpha1+"||"+mAlpha2);
                         mAlpha1 = rljdtesttitle1.getAlpha();
                         mAlpha2 = rljdtesttitle2.getAlpha();
                     }
