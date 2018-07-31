@@ -1,4 +1,5 @@
 # scrolldemo
+
 #### 1.参考借鉴
 - [Android仿京东商品详情页上拉查看图文详情](https://www.jianshu.com/p/0fc1d9223d3d)
 - [模仿淘宝、京东、蘑菇街商品详情页，可嵌套ListView、WebView、ViewPager、FragmentTabhost等]([https://github.com/happylishang/DragScrollDetailsLayout#3%E6%94%AF%E6%8C%81%E6%94%AF%E6%8C%81scrollviewlistview](https://github.com/happylishang/DragScrollDetailsLayout#3%E6%94%AF%E6%8C%81%E6%94%AF%E6%8C%81scrollviewlistview)
@@ -415,5 +416,7 @@ public abstract class DragDetailFragmentPagerAdapter extends FragmentPagerAdapte
     }
 }
 ```
+
+
 #### 简书
 [简书](https://www.jianshu.com/p/1181a9eca491)
