@@ -25,6 +25,8 @@
         <activity android:name=".jingdong.ScrollOneActivity"/>
         <activity android:name=".test.ScrollTestActivity"/>
         <activity android:name=".jd.JDTestActivity"/>
+
+        <activity android:name=".jd3.JDTransActivity"/>
     </application>
 
 </manifest>

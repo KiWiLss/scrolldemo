@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.kiwilss.scrolldemo.widget.DragScrollDetailsLayout
+        android:id="@+id/jd_dsdl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.kiwilss.scrolldemo.widget.GradationScrollView
+            android:id="@+id/jd_gsv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--图片,或者轮播图等-->
+                <ImageView
+                    android:id="@+id/iv_jd_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:src="@drawable/bg_3"
+                    android:scaleType="centerCrop"/>
+
+                <!--其他内容-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:text="@string/large_text" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="继续下拉,查看图文详情"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+        </com.kiwilss.scrolldemo.widget.GradationScrollView>
+
+        <!--下半部分内容,简单处理,一个webview-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#fff">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="70dp" />
+
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tl_jd_tab"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"/>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_jd_vp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+        </LinearLayout>
+
+
+
+
+    </com.kiwilss.scrolldemo.widget.DragScrollDetailsLayout>
+
+
+
+</LinearLayout>

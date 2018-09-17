@@ -1,5 +1,8 @@
-package com.kiwilss.scrolldemo.jd;
+package com.kiwilss.scrolldemo.jd3;
 
+
+import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -8,14 +11,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.kiwilss.scrolldemo.R;
 import com.kiwilss.scrolldemo.jd.adapter.JdOneAdapter;
-import com.kiwilss.scrolldemo.jd.fg.JdOneFg;
-import com.kiwilss.scrolldemo.jd.fg.JdTwoFg;
+import com.kiwilss.scrolldemo.jd3.fg.JdOneFg;
+import com.kiwilss.scrolldemo.jd3.fg.JdTwoFg;
 import com.kiwilss.scrolldemo.widget.NoScrollViewPager;
 
 import java.util.ArrayList;
@@ -29,28 +33,26 @@ import java.util.ArrayList;
  * desc   : ${DESCRIPTION}
  * Description: ${DESCRIPTION}
  */
-public class JDTestActivity extends AppCompatActivity {
-    private android.widget.RelativeLayout rljdtestbottom;
-    private com.kiwilss.scrolldemo.widget.NoScrollViewPager nsvjdtestvp;
-    private android.widget.ImageView ivjdtestback1;
-    private android.widget.ImageView ivjdtestshare1;
-    public android.widget.RelativeLayout rljdtesttitle1;
-    private android.widget.ImageView ivjdtestback2;
-    private android.widget.ImageView ivjdtestshare2;
-    private android.support.design.widget.TabLayout tljdtesttab;
-    private android.widget.TextView tvjdtestinfo;
-    public android.widget.RelativeLayout rljdtesttitle2;
+public class JDTransActivity extends AppCompatActivity {
+    private RelativeLayout rljdtestbottom;
+    private NoScrollViewPager nsvjdtestvp;
+    private ImageView ivjdtestback1;
+    private ImageView ivjdtestshare1;
+    public RelativeLayout rljdtesttitle1;
+    private ImageView ivjdtestback2;
+    private ImageView ivjdtestshare2;
+    private TabLayout tljdtesttab;
+    private TextView tvjdtestinfo;
+    public RelativeLayout rljdtesttitle2;
     private ArrayList<Fragment> mFragments;
     private int mPos;
     private float mAlpha1 = 1;
     private float mAlpha2 = 0;
-
-
-
+    boolean isFirst = true;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jd_test);
+        setContentView(R.layout.activity_jd_test3);
 
         this.rljdtesttitle2 = (RelativeLayout) findViewById(R.id.rl_jd_test_title2);
         this.tvjdtestinfo = (TextView) findViewById(R.id.tv_jd_test_info);
@@ -64,7 +66,14 @@ public class JDTestActivity extends AppCompatActivity {
         this.rljdtestbottom = (RelativeLayout) findViewById(R.id.rl_jd_test_bottom);
 
 
+        //透明状态栏
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().addFlags(
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
+            //设置状态栏字体颜色
+            setLightMode(this,false);
+        }
 
 
         initFragment();
@@ -78,21 +87,17 @@ public class JDTestActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
-                //记录标题初始透明度值,滑动界面结束时会触发,导致初始值改变,建议使用别的方法实现TabLayout
-                Log.e("MMM", "onTabSelected: "+position+"||");
+                //记录标题初始透明度值
                 if (position == 1){
-                        mAlpha1 = rljdtesttitle1.getAlpha();
-                        mAlpha2 = rljdtesttitle2.getAlpha();
-
+                    mAlpha1 = rljdtesttitle1.getAlpha();
+                    mAlpha2 = rljdtesttitle2.getAlpha();
                 }
-
-
+                Log.e("MMM", "onTabSelected: "+mAlpha1+"***"+mAlpha2);
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
-                Log.e("MMM", "onTab: "+position+"||");
+
             }
 
             @Override
@@ -101,11 +106,17 @@ public class JDTestActivity extends AppCompatActivity {
             }
         });
 
+
         //viewPager滑动监听
         nsvjdtestvp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 Log.e("MMM", "onPageScrolled: "+position+"||"+positionOffset +"***"+mAlpha1+"***"+mAlpha2);
+                //Log.e("MMM", "onPageScrolled: "+mAlpha1+"--"+mAlpha2 );
+                if (isFirst){
+                    isFirst = false;
+                    return;
+                }//首次不执行
                 if (position == 0){
                     rljdtesttitle1.setAlpha(mAlpha1-positionOffset);
                     rljdtesttitle2.setAlpha(positionOffset+mAlpha2);
@@ -114,8 +125,6 @@ public class JDTestActivity extends AppCompatActivity {
                     rljdtesttitle1.setAlpha(0);
                     rljdtesttitle2.setAlpha(1);
                 }
-
-
             }
 
             @Override
@@ -124,20 +133,14 @@ public class JDTestActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {//0：什么都没做1：开始滑动2：滑动结束
+            public void onPageScrollStateChanged(int state) {
                 if(state == 1){
-
                     //开始拖动
                     if (mPos == 0){
                         mAlpha1 = rljdtesttitle1.getAlpha();
                         mAlpha2 = rljdtesttitle2.getAlpha();
                         Log.e("MMM", "onPageScrollStateChanged: "+mAlpha1+"||"+mAlpha2);
                     }
-                }else {//非滑动状态
-                    Log.e("MMM", "onPageScrollStateChanged: " );
-                    //
-
-
                 }
             }
         });
@@ -176,4 +179,25 @@ public class JDTestActivity extends AppCompatActivity {
         mFragments.add(jdOneFg);
         mFragments.add(jdTwoFg);
     }
+
+    /**
+     * 设置状态栏字体颜色
+     *
+     * @param activity
+     * @param isLightMode
+     */
+    public void setLightMode(Activity activity, boolean isLightMode) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //切换到浅色状态栏模式，黑字
+            if (isLightMode){
+                activity.getWindow().getDecorView()
+                        .setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            }else {
+                //切换到深色模式，白字
+                activity.getWindow().getDecorView()
+                        .setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+            }
+        }
+    }
+
 }

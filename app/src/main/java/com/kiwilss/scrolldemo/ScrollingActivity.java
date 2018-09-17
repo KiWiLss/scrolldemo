@@ -6,11 +6,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.kiwilss.scrolldemo.jd.JDTestActivity;
+import com.kiwilss.scrolldemo.jd3.JDTransActivity;
 import com.kiwilss.scrolldemo.jingdong.ScrollOneActivity;
 import com.kiwilss.scrolldemo.test.ScrollTestActivity;
 
@@ -31,7 +33,46 @@ public class ScrollingActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
+        int screenHeight = Utils.getScreenHeight(this);
+        int screenHeight2 = Utils.getScreenHeight2(this);
+        Log.e("MMM", "onCreate: "+screenHeight+"||"+screenHeight2 );
+
+
+
+
+
     }
+
+//    @TargetApi(28)
+//    public void getNotchParams() {
+//        final View decorView = getWindow().getDecorView();
+//
+//        decorView.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                DisplayCutout displayCutout = decorView.getRootWindowInsets().getDisplayCutout();
+//                Log.e("TAG", "安全区域距离屏幕左边的距离 SafeInsetLeft:" + displayCutout.getSafeInsetLeft());
+//                Log.e("TAG", "安全区域距离屏幕右部的距离 SafeInsetRight:" + displayCutout.getSafeInsetRight());
+//                Log.e("TAG", "安全区域距离屏幕顶部的距离 SafeInsetTop:" + displayCutout.getSafeInsetTop());
+//                Log.e("TAG", "安全区域距离屏幕底部的距离 SafeInsetBottom:" + displayCutout.getSafeInsetBottom());
+//
+//                List<Rect> rects = displayCutout.getBoundingRects();
+//                if (rects == null || rects.size() == 0) {
+//                    Log.e("TAG", "不是刘海屏");
+//                } else {
+//                    Log.e("TAG", "刘海屏数量:" + rects.size());
+//                    for (Rect rect : rects) {
+//                        Log.e("TAG", "刘海屏区域：" + rect);
+//                    }
+//                }
+//            }
+//        });
+//    }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -64,5 +105,9 @@ public class ScrollingActivity extends AppCompatActivity {
 
     public void scrollOne2(View view) {
         startActivity(new Intent(this, JDTestActivity.class));
+    }
+
+    public void scrollOne3(View view) {
+        startActivity(new Intent(this, JDTransActivity.class));
     }
 }
