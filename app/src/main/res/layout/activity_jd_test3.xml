@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:id="@+id/rl_jd_outer"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -38,13 +39,15 @@
     <RelativeLayout
         android:id="@+id/rl_jd_test_title1"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="25dp"
        >
 
-        <View
-            android:id="@+id/v_jd_test_one"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"/>
+        <!--<View-->
+            <!--android:id="@+id/v_jd_test_one"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="25dp"-->
+        <!--/>-->
 
 
         <ImageView
@@ -54,7 +57,7 @@
             android:src="@mipmap/backicon2"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_below="@+id/v_jd_test_one"/>
+           />
 
         <ImageView
             android:id="@+id/iv_jd_test_share1"
@@ -64,7 +67,7 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:layout_below="@+id/v_jd_test_one"/>
+           />
 
     </RelativeLayout>
 
@@ -73,15 +76,13 @@
     <RelativeLayout
         android:id="@+id/rl_jd_test_title2"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="45dp"
         android:background="#fff"
         android:alpha="0"
+        android:layout_marginTop="25dp"
         >
 
-        <View
-            android:id="@+id/v_jd_test_two"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"/>
+
         <ImageView
             android:id="@+id/iv_jd_test_back2"
             android:layout_width="wrap_content"
@@ -89,7 +90,7 @@
             android:src="@mipmap/backiocn"
             android:layout_centerVertical="true"
             android:layout_marginLeft="14dp"
-            android:layout_below="@+id/v_jd_test_two"/>
+            />
 
         <ImageView
             android:id="@+id/iv_jd_test_share2"
@@ -99,7 +100,7 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="14dp"
-            android:layout_below="@+id/v_jd_test_two"/>
+            />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tl_jd_test_tab"
@@ -107,7 +108,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
-            android:layout_below="@+id/v_jd_test_two"/>
+            />
 
         <TextView
             android:id="@+id/tv_jd_test_info"
@@ -118,7 +119,7 @@
             android:textColor="#000"
             android:layout_centerInParent="true"
             android:visibility="gone"
-            android:layout_below="@+id/v_jd_test_two"/>
+            />
 
 
         <View

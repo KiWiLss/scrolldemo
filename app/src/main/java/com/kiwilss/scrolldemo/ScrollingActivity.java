@@ -2,6 +2,8 @@ package com.kiwilss.scrolldemo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemProperties;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,12 +13,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.kiwilss.scrolldemo.activity_result.ResultTestActivity;
+import com.kiwilss.scrolldemo.activity_result.utils.AvoidOnResult;
 import com.kiwilss.scrolldemo.jd.JDTestActivity;
 import com.kiwilss.scrolldemo.jd3.JDTransActivity;
 import com.kiwilss.scrolldemo.jingdong.ScrollOneActivity;
 import com.kiwilss.scrolldemo.test.ScrollTestActivity;
+import com.kiwilss.scrolldemo.utils.SystemUtil;
 
 public class ScrollingActivity extends AppCompatActivity {
+
+    public static final String TAG = "MMM";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +47,67 @@ public class ScrollingActivity extends AppCompatActivity {
         Log.e("MMM", "onCreate: "+screenHeight+"||"+screenHeight2 );
 
 
+        //SystemProperties.getInt("ro.miui.notch", 0) == 1
+
+        //判断是否隐藏了刘海屏
+        int force_black = Settings.Global.getInt(getContentResolver(), "force_black", 0);
+        Log.e(TAG, "onCreate: "+force_black
+        +"||||"+ SystemProperties.getInt("ro.miui.notch", 0));
+
+
+    showSystemParameter();
 
 
 
+
+
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        boolean frontdesk = Utils.Frontdesk(this);
+
+        boolean appOnForeground = Utils.isAppOnForeground(this);
+
+        boolean appForeground = Utils.isAppForeground(this);
+
+        Log.e(TAG, "onResume: "+frontdesk +"||"+ appOnForeground +"||"+appForeground);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        boolean frontdesk = Utils.Frontdesk(this);
+
+        boolean appOnForeground = Utils.isAppOnForeground(this);
+
+        boolean appForeground = Utils.isAppForeground(this);
+
+        Log.e(TAG, "onPause: "+frontdesk +"||"+ appOnForeground +"||"+appForeground);
+
+//        if(!frontdesk){
+//            Toast.makeText(getApplicationContext(), TAG+"onPause:",
+//                    Toast.LENGTH_SHORT).show();
+//        }else {
+////            sendBroadcast(new Intent(NotificationIntentReceiver.ACTION_ENABLE_MESSAGES)
+////                    .setClass(this, NotificationIntentReceiver.class));
+//            Toast.makeText(getApplicationContext(), TAG+"后台运行1",
+//                    Toast.LENGTH_SHORT).show();
+//        }
+    }
+
+
+
+    private void showSystemParameter() {
+        //String TAG = "系统参数：";
+        Log.e(TAG, "手机厂商：" + SystemUtil.getDeviceBrand());//HONOR(华为荣耀),xiaomi(小米手机型号：Redmi 6 Pro)
+        Log.e(TAG, "手机型号：" + SystemUtil.getSystemModel());
+        Log.e(TAG, "手机当前系统语言：" + SystemUtil.getSystemLanguage());
+        Log.e(TAG, "Android系统版本号：" + SystemUtil.getSystemVersion());
+        //Log.e(TAG, "手机IMEI：" + SystemUtil.getIMEI(getApplicationContext()));
     }
 
 //    @TargetApi(28)
@@ -109,5 +174,22 @@ public class ScrollingActivity extends AppCompatActivity {
 
     public void scrollOne3(View view) {
         startActivity(new Intent(this, JDTransActivity.class));
+    }
+
+
+    public void resultListener(View view) {
+        AvoidOnResult avoidOnResult = new AvoidOnResult(this);
+
+        avoidOnResult.startForResult(ResultTestActivity.class, 3, new AvoidOnResult.Callback() {
+            @Override
+            public void onActivityResult(int requestCode, int resultCode, Intent data) {
+                Log.e(TAG, "onActivityResult: "+requestCode+"||"+resultCode );
+                if (resultCode == RESULT_OK){
+                    Log.e(TAG, "onActivityResult: " );
+                }
+
+            }
+        });
+
     }
 }

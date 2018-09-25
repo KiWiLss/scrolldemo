@@ -2,8 +2,10 @@ package com.kiwilss.scrolldemo.jd3;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -72,8 +74,30 @@ public class JDTransActivity extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
             //设置状态栏字体颜色
-            setLightMode(this,false);
+            setLightMode(this,true);
         }
+
+        RelativeLayout rlOuter = findViewById(R.id.rl_jd_outer);
+
+        //如果是刘海屏,留出状态栏的高度(对小米手机)
+        if (SystemProperties.getInt("ro.miui.notch", 0) == 1) {
+            int statusBarHeight = getStatusBarHeight(this);
+            Log.e("MMM", "onCreate: "+statusBarHeight);
+
+            rlOuter.setPadding(0,statusBarHeight,0,0);
+
+            //非刘海屏预留的占位隐藏
+            RelativeLayout.LayoutParams layoutParams =
+                    (RelativeLayout.LayoutParams) rljdtesttitle1.getLayoutParams();
+            layoutParams.setMargins(0,0,0,0);
+
+            RelativeLayout.LayoutParams layoutParams2 =
+                    (RelativeLayout.LayoutParams) rljdtesttitle2.getLayoutParams();
+            layoutParams2.setMargins(0,0,0,0);
+        }
+
+
+
 
 
         initFragment();
@@ -151,6 +175,17 @@ public class JDTransActivity extends AppCompatActivity {
 
 
     }
+
+    public int getStatusBarHeight(Context context) {
+        int statusBarHeight = 0;
+        int resourceId = context.getResources().getIdentifier("status_bar_height",
+                "dimen", "android");
+        if (resourceId > 0) {
+            statusBarHeight = context.getResources().getDimensionPixelSize(resourceId);
+        }
+        return statusBarHeight;
+    }
+
 
 
     public void changeViewPager(boolean isOpen){

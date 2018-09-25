@@ -38,6 +38,12 @@
             android:text="仿京东商品详情页,透明状态栏"
             android:onClick="scrollOne3"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="onActivityResult"
+            android:onClick="resultListener"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -26,7 +26,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:src="@drawable/bg_3"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    />
 
                 <!--其他内容-->
                 <TextView
